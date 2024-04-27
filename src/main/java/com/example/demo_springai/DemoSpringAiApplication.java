@@ -10,4 +10,6 @@ public class DemoSpringAiApplication {
         SpringApplication.run(DemoSpringAiApplication.class, args);
     }
 
+
+
 }

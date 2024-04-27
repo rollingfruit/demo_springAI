@@ -1,15 +1,22 @@
 package com.example.demo_springai;
 
+import com.theokanning.openai.audio.CreateTranscriptionRequest;
+import com.theokanning.openai.service.OpenAiService;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.openai.OpenAiChatClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import reactor.core.publisher.Flux;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 @RestController
@@ -17,6 +24,7 @@ public class ChatController {
 
     private final OpenAiChatClient chatClient;
 
+//    ChatService chatService = new ChatService();
     @Autowired
     public ChatController(OpenAiChatClient chatClient) {
         this.chatClient = chatClient;
@@ -29,7 +37,15 @@ public class ChatController {
 
     @GetMapping("/ai/generateStream")
     public Flux<ChatResponse> generateStream(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
+        System.out.println("message: " + message);
         Prompt prompt = new Prompt(new UserMessage(message));
-        return chatClient.stream(prompt);
+        Flux<ChatResponse> stream = chatClient.stream(prompt);
+        return stream;
     }
+
+
+
+
+
+
 }

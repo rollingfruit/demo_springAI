@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Backend Stream</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <div class="chat-container">
+        <ul>
+            <li v-for="msg in messages" :class="{ 'ai-message': msg.who === 'ai', 'user-message': msg.who === 'user' }">
+                <img v-if="msg.who === 'ai'" src="./figs/ai.png" class="avatar ai-avatar">
+                <span>{{ msg.text }}</span>
+                <img v-if="msg.who === 'user'" src="./figs/user.png" class="avatar user-avatar">
+            </li>
+        </ul>
+        <div class="input-container">
+            <input type="text" v-model="userInput" @keyup.enter="sendMessage">
+            <button id="sendButton" @click="sendMessage">Send</button>
+            <button id="recordButton" @mousedown="startRecording" @mouseup="stopRecording" @touchstart="startRecording" @touchend="stopRecording">Rec</button>
+            <button @click="sendUserMessages">Analyse Oral English</button>
+
+        </div>
+        <p>{{ recordingStatus }}</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Chat with Backend</title>-->
+<!--    <link rel="stylesheet" href="style.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="app">-->
+<!--    <div class="chat-container">-->
+<!--        <ul v-for="msg in messages">-->
+<!--            <li v-if="msg.who == 'user'">You: {{ msg.text }}</li>-->
+<!--            <li v-if="msg.who == 'ai'">AI: {{ msg.text }}</li>-->
+<!--        </ul>-->
+<!--        <input type="text" v-model="userInput" @keyup.enter="sendMessage">-->
+<!--        <button @click="sendMessage">Send</button>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
+<!--<script src="app.js"></script>-->
+<!--</body>-->
+<!--</html>-->

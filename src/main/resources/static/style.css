@@ -1,0 +1,124 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+.chat-container {
+    width: 800px;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+span {
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    max-width: 70%;
+}
+
+.ai-message span {
+    background-color: #e0e0e0;
+    margin-left: 10px;
+    align-self: flex-start; /* Align to the left */
+    white-space: pre-wrap; /* Maintain whitespace formatting */
+}
+
+.ai-message span::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #e0e0e0 transparent transparent;
+}
+
+.user-message {
+    justify-content: flex-end; /* Align user messages to the right */
+    align-items: flex-end;
+}
+
+.user-message span {
+    background-color: #0078d7;
+    color: white;
+    margin-right: 10px;
+    text-align: right;
+    align-self: flex-end; /* Align to the right */
+    white-space: pre-wrap; /* Maintain whitespace formatting */
+}
+
+.user-message span::before {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent #0078d7;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.ai-avatar {
+    margin-right: 10px;
+}
+
+.user-avatar {
+    margin-left: 10px;
+}
+
+input, button {
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+input {
+    width: 85%;
+    /*margin-bottom: 10px;*/
+    margin: 0 auto;
+}
+
+button {
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+#recordButton {
+    background-color: #e57373; /* Light red, harmonizing with the blue send button */
+}
